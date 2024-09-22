@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="valid.css" />
+    <title>Form Validation</title>
+    <style>
+        span{
+           
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+    <h3 align="center">Form Validation Using JavaScript</h3>
+    <div class="form-ex">
+        <form action="welcome.html" onsubmit=" return validate()">
+            <input type="text" id="user" placeholder="Enter UserName" required />
+            <span id="user1" style="color:red;"></span>
+            <input type="password" id="password" placeholder="Enter Password" required autocomplete="off" />
+            <span id="password1" style="color:red;"></span>
+            <input type="text" id="email" placeholder="Enter Email" required autocomplete="off" />
+            <span id="email1" style="color:red;"></span>
+            <input type="number" id="number" placeholder="Enter Mobile Number" required autocomplete="off" />
+            <span id="number1" style="color:red;"></span>
+            <input class="hello" type="submit" value="Submit" />
+        </form>
+    </div>
+    <script>
+
+        function validate() {
+            const Reg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$&]).{8,20}/;
+            var user = document.getElementById("user");
+            var password = document.getElementById("password");
+            var mobile = document.getElementById("number");
+            var email1=document.getElementById("email");
+            var Reg1=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+            if (user.value.length < 6 ) {
+                document.getElementById("user1").innerHTML="Username must be atleast 6 Characters";
+                return false;
+            }
+            else if (!((password.value).match(Reg))) {
+               document.getElementById("password1").innerHTML="Password is consist of at least 1 Uppercase & 1 Lower Case & 1 Digit & @#$& Symbols and Minimum 8 and Maximum 20 characters";
+                return false;
+            }
+            else if (!((email1.value).match(Reg1))){
+                document.getElementById("email1").innerHTML="Invalid email format";
+                return false;
+            }
+            else if (mobile.value.length != 10) {
+                document.getElementById("number1").innerHTML="Mobile Number must be 10 digits";
+                return false;
+            }
+
+            else {
+                return true;
+            }
+
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
